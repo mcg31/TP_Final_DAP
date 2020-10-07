@@ -1,0 +1,7 @@
+{
+  "name": "Lecheritas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
