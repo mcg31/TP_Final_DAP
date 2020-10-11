@@ -1,17 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Control Lechero
     </ion-title>
+    <ion-label position="end">{{user}}</ion-label>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item>
+    <ion-label><h1>
+      Bienvenido!</h1>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label><h2>Identifíquese por favor</h2></ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-select position=floating placeholder="Usuario" [(ngModel)]= "user">
+      <ion-select-option value="Ignacio">Ignacio</ion-select-option>
+      <ion-select-option value="JoseB">José Brizzio</ion-select-option>
+      <ion-select-option value="JoseG">José González</ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label  position="floating">Contraseña<ion-text color="danger">*</ion-text></ion-label>
+    <ion-input [(ngModel)] = "contrasenia" type="password"></ion-input>
+  </ion-item>
 </ion-content>
+

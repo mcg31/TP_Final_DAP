@@ -1,17 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Ingreso Litros
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ion-item>
+      <ion-label position="start">1er Ordeñe: </ion-label>
+       <ion-input [(ngModel)] = "pri_ord" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="start">2do Ordeñe: </ion-label> 
+      <ion-input [(ngModel)] = "seg_ord" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="start">3er Ordeñe: </ion-label> 
+      <ion-input [(ngModel)] = "ter_ord" type="number"></ion-input>
+    </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-button (click) = "guardar()" color="dark" expand="full">Guardar</ion-button>
+  
 </ion-content>
