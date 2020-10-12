@@ -23,15 +23,16 @@
       </ion-item>
     </ion-radio-group>
   </ion-item>
- 
+  
   <div class="ion-padding">
     <ion-item>
     <ion-label position="center"> Inicio: </ion-label>
-    <ion-input [(ngModel)]="selectedDateI" (click)="SelectDate()" type="text"></ion-input>
+    <ion-datetime  [(ngModel)]= "fechaI" display-timezone="utc"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label position="center"> Fin: </ion-label>
-    <ion-input [(ngModel)]="selectedDateF" (click)="SelectDate()" type="text"></ion-input>
+    <ion-datetime  [(ngModel)]= "fechaF" display-timezone="utc"></ion-datetime>
+
   </ion-item>
   </div>
 
@@ -47,15 +48,14 @@
                     [labels]="lineChartLabels"
                     [options]="lineChartOptions"
                     [colors]="lineChartColorsT"
-                    [legend]="lineChartLegendT"
-                    [chartType]="lineChartTypeT"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
                     (chartHover)="chartHovered($event)"
                     (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
     </div>
-
-    
+   
     <ion-item>
       <ion-label position="center"> Valores por Ordeñe </ion-label>
     </ion-item>

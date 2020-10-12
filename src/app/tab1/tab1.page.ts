@@ -8,13 +8,14 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
   user: string = "";
-  private contrasenia: string;
+  /*private contrasenia: string;
   private usuarios: [{ "Nombre": "Ignacio", "contraseña": "Ignacio" }, { "Nombre": "José González", "contraseña": "JoseG" }, { "Nombre": "José Brizio", "contraseña": "JoseB" }];
-  
+  */
   constructor(private alContrl: AlertController) { }
-  
-  public login() {
-    for (var i; i < 3; i++) {
+  /*
+  public async login() {
+    let verificador: boolean = false;
+    for (var i = 0; i < 3; i++) {
       
       if (this.usuarios[i].Nombre == this.user && this.usuarios[i].contraseña == this.contrasenia) {
         const cuerpoAlerta = {
@@ -22,8 +23,20 @@ export class Tab1Page {
           message: "Ingreso exitoso como usuario: " + this.user,
           buttons: ["OK"]
         };
-        const alerta = this.alContrl.create(cuerpoAlerta);
+        verificador = true;
+        const alerta = await this.alContrl.create(cuerpoAlerta);
+        await alerta.present();
       }
     }
+    if (!verificador) {
+      const cuerpoAlertaF = {
+        header: "Ingreso",
+        message: "Verifique los datos ingresados",
+        buttons: ["OK"]
+      };
+      const alertaF = await this.alContrl.create(cuerpoAlertaF);
+      await alertaF.present();
+    }
   }
+  */
 }
