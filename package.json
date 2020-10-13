@@ -30,6 +30,7 @@
     "capacitor-datepicker": "0.0.2",
     "chart.js": "^2.9.3",
     "cordova-plugin-datepicker": "^0.9.3",
+    "moment": "^2.29.1",
     "ng2-charts": "^2.4.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

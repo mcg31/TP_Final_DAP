@@ -7,12 +7,12 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  user: string = "";
-  /*private contrasenia: string;
-  private usuarios: [{ "Nombre": "Ignacio", "contraseña": "Ignacio" }, { "Nombre": "José González", "contraseña": "JoseG" }, { "Nombre": "José Brizio", "contraseña": "JoseB" }];
-  */
+  public user: string = "";
+  private contrasenia: string = "";
+  private usuarios= [{ "Nombre": "Ignacio", "contraseña": "Ignacio" }, { "Nombre": "José González", "contraseña": "JoseG" }, { "Nombre": "José Brizio", "contraseña": "JoseB" }];
+  
   constructor(private alContrl: AlertController) { }
-  /*
+  
   public async login() {
     let verificador: boolean = false;
     for (var i = 0; i < 3; i++) {
@@ -38,5 +38,4 @@ export class Tab1Page {
       await alertaF.present();
     }
   }
-  */
 }
