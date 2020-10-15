@@ -3,42 +3,27 @@
     <ion-title>
       Estadísticas
     </ion-title>
-    <ion-item>
-      <ion-label >{{user}}</ion-label>
-    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-radio-group [(ngModel)]="seleccion" value ="UM">
-      <ion-label position="floating">Seleccione</ion-label>
-      <ion-item>
-        <ion-label>Último Mes</ion-label>
-        <ion-radio slot="start" value="UM"></ion-radio>
+    <ion-radio-group value ="MO" [(ngModel)]="seleccion" >
+      <ion-label position="start">Opciones de Visualización</ion-label>
+      <ion-item *ngIf="seleccion!='MT'">
+        <ion-label>Mostrar Total</ion-label>
+        <ion-radio slot="start" value="MT" color="dark"></ion-radio>
       </ion-item>
-      <ion-item>
-        <ion-label>Seleccionar fechas</ion-label>
-        <ion-radio slot="start" value="SF"></ion-radio>
+      <ion-item *ngIf="seleccion!='MO'">
+        <ion-label>Mostrar por ordeñe</ion-label>
+        <ion-radio slot="start" value="MO" color="dark"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-item>
-  
-  <div class="ion-padding">
-    <ion-item>
-    <ion-label position="center"> Inicio: </ion-label>
-    <ion-datetime  [(ngModel)]= "fechaI" display-timezone="utc"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label position="center"> Fin: </ion-label>
-    <ion-datetime  [(ngModel)]= "fechaF" display-timezone="utc"></ion-datetime>
-
-  </ion-item>
-  </div>
-
   <ion-content padding>
+    <div *ngIf="seleccion=='MT'">
     <ion-item>
-      <ion-label position="center"> Totales Diarios </ion-label>
+      <ion-label  position="center" > Totales Diarios </ion-label>
     </ion-item>
     <div class="row">
       <div class="col-md-6">
@@ -55,9 +40,10 @@
         </div>
       </div>
     </div>
-   
+    </div>
+  <ion-list *ngIf="seleccion=='MO'">
     <ion-item>
-      <ion-label position="center"> Valores por Ordeñe </ion-label>
+      <ion-label  position="center"> Control Lechero por Ordeñe </ion-label>
     </ion-item>
    <div class="row">
       <div class="col-md-6">
@@ -74,6 +60,7 @@
         </div>
       </div>
     </div>
+  </ion-list>
   </ion-content>
 
 </ion-content>

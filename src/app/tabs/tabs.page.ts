@@ -9,7 +9,6 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-  user: string = "";
-  constructor() {}
+  constructor() { }
 
 }

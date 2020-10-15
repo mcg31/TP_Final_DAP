@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { RegistrosService } from '../registros.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,12 +10,13 @@ import { AlertController } from '@ionic/angular';
 export class Tab1Page {
   public user: string = "";
   private contrasenia: string = "";
+  public CheckLogin: boolean = false;
   private usuarios= [{ "Nombre": "Ignacio", "contraseña": "Ignacio" }, { "Nombre": "José González", "contraseña": "JoseG" }, { "Nombre": "José Brizio", "contraseña": "JoseB" }];
   
-  constructor(private alContrl: AlertController) { }
+  constructor(private alContrl: AlertController, RegistroSrv: RegistrosService) { }
   
   public async login() {
-    let verificador: boolean = false;
+    
     for (var i = 0; i < 3; i++) {
       
       if (this.usuarios[i].Nombre == this.user && this.usuarios[i].contraseña == this.contrasenia) {
@@ -23,12 +25,12 @@ export class Tab1Page {
           message: "Ingreso exitoso como usuario: " + this.user,
           buttons: ["OK"]
         };
-        verificador = true;
+        this.CheckLogin= true;
         const alerta = await this.alContrl.create(cuerpoAlerta);
         await alerta.present();
       }
     }
-    if (!verificador) {
+    if (!this.CheckLogin) {
       const cuerpoAlertaF = {
         header: "Ingreso",
         message: "Verifique los datos ingresados",

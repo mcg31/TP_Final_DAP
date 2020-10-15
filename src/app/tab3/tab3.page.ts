@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Registro } from '../model/registro';
 import { LoadingController } from '@ionic/angular';
+import { RegistrosService } from '../registros.service';
 
 @Component({
   selector: 'app-tab3',
@@ -9,18 +10,31 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['tab3.page.scss']
 })
 
-
+/*<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-radio-group value ="MO" [(ngModel)]="seleccion" >
+      <ion-label position="start">Opciones de Visualización</ion-label>
+      <ion-item>
+        <ion-label>Mostrar Total</ion-label>
+        <ion-radio slot="start" value="MT" color="dark"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mostrar por ordeñe</ion-label>
+        <ion-radio slot="start" value="MO" color="dark"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-item>
+  */
 export class Tab3Page implements OnInit {
   
-  private historial;
-  private fechaI = new Date();
-  private fechaF = new Date();
+  public historial;
+  public seleccion ;
   public DatosCompletos: Array<any> = [
     { data: [], label: '1er ordeñe' },
     { data: [], label: '2do ordeñe' },
     { data: [], label: '3er ordeñe' }
   ];
-  private DatosCompletosT:Array<any> = [{ data:[], label: "Total Diario" }];
+  public DatosCompletosT:Array<any> = [{ data:[], label: "Total Diario" }];
   
   //POR ORDEÑE
   public lineChartData: Array<any> = [
@@ -76,12 +90,12 @@ public lineChartColorsT:Array<any> = [
   },
 ];
 
-  constructor(private httpClient: HttpClient, private lodading: LoadingController) { }
+  constructor(private httpClient: HttpClient, private lodading: LoadingController, private RegistroSrv: RegistrosService) { }
 
   public async ngOnInit() {
     const loading = await this.lodading.create();
     loading.present();
-    this.CargarDatos().subscribe(datos => {
+    this.RegistroSrv.CargarDatos().subscribe(datos => {
       this.historial = datos
       loading.dismiss();
       this.GenerarEntradas();
@@ -89,12 +103,7 @@ public lineChartColorsT:Array<any> = [
       });
     
    }
-
-
-  public CargarDatos() {
-    return this.httpClient.get<Registro[]>("http://localhost:3000/historial");
-  }
-  
+ 
   public GenerarEntradas()
   {
     for (var i = 0; i < this.historial.length; i++)
@@ -113,6 +122,15 @@ public lineChartColorsT:Array<any> = [
     this.lineChartDataT = this.DatosCompletosT;  
     this.lineChartLabels = this.Fechas;
   }
+  
+  public chartClicked(e:any):void {
+    console.log(e);}
+  
+  public chartHovered(e:any):void {
+    console.log(e);}
+}
+/* Agregar filtardo por fechas:
+ts
   public obtenerPorFechas(FechaI: Date, FechaF: Date) {
     
     //var aux = moment().calendar();
@@ -135,9 +153,14 @@ public lineChartColorsT:Array<any> = [
     };
   }
 
-  public chartClicked(e:any):void {
-    console.log(e);}
-  
-  public chartHovered(e:any):void {
-    console.log(e);}
-}
+html
+ <div class="ion-padding">
+    <ion-item>
+    <ion-label position="center"> Inicio: </ion-label>
+    <ion-datetime  [(ngModel)]= "fechaI" displayFormat="DD/MM/YYYY" display-timezone="utc"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="center"> Fin: </ion-label>
+    <ion-datetime  [(ngModel)]= "fechaF" displayFormat="DD/MM/YYYY" display-timezone="utc"></ion-datetime>
+  </ion-item>
+  </div>*/
