@@ -9,11 +9,14 @@ import { Registro } from './model/registro';
 export class RegistrosService {
   public registro:Registro = new Registro;
   public NuevaEntrada: Registro = new Registro;
+  public historial;
   public usuario: string;
   public litros1;
   public litros2;
   public litros3;
-  public fecha;
+  public fecha: string;
+  public CheckLogin = false;
+//  public id : number;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,14 +26,14 @@ export class RegistrosService {
   }
   
   public borrar(registro: Registro) {  
-    return this.httpClient.delete("http://localhost:3000/historial/"+this.registro.fecha);
+    return this.httpClient.delete("http://localhost:3000/historial/" + this.registro.fecha);
     } 
 
   public CargarDatos() {
     return this.httpClient.get<Registro[]>("http://localhost:3000/historial");
   }
-  public CargarDia(fecha:string) {
-    return this.httpClient.get<Registro[]>("http://localhost:3000/historial"+this.fecha);
+  public CargarDia(id: number) {
+    return this.httpClient.get<Registro>("http://localhost:3000/historial/" + id);
   }
 
 }

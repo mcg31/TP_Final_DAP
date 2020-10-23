@@ -3,6 +3,7 @@
     <ion-title>
       Ingreso Litros
     </ion-title>
+    <ion-label *ngIf="RegistroSrv.CheckLogin== true" slot="end" class="user_log">{{RegistroSrv.usuario}}</ion-label>
   </ion-toolbar>
 </ion-header>
 

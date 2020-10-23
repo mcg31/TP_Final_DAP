@@ -6,12 +6,12 @@
       <ion-label>Login</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab2">
+    <ion-tab-button tab="tab2" *ngIf="RegistroSrv.CheckLogin== true">
       <ion-icon name="pencil"></ion-icon>
       <ion-label>Ingresar Litros</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
+    <ion-tab-button tab="tab3" *ngIf="RegistroSrv.CheckLogin== true">
       <ion-icon name="analytics"></ion-icon>
       <ion-label>Estadísticas</ion-label>
     </ion-tab-button>
